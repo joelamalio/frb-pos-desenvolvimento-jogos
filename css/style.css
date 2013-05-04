@@ -1,3 +1,16 @@
 html {
 	background: url("../images/background.jpg");
 }
+
+#instructions {
+  color: white;
+  font-family: monospace;
+  text-align: center;
+}
+
+#instructions span {
+  color: gray;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: underline;
+}

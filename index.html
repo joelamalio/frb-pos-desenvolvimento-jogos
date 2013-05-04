@@ -6,13 +6,19 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+  <header>
+    <p id="instructions">
+        <span>TAB</span> = Começar o jogo <span><-</span> = Mover para o lado esquerdo <span>-></span> = Mover para o lado direito <span>SPACE</span> = Efetuar disparo
+    </p>
+  </header>
   <div align="center">
-    <canvas id="main_canvas" tabindex="1" width="1024" height="640" />
+    <canvas id="main_canvas" tabindex="1" width="800" height="600" />
   </div>
   <script src="js/class.js"></script>
   <script src="js/box_2d.js"></script>
   <script src="js/entity.js"></script>
   <script src="js/player.js"></script>
+  <script src="js/weapon.js"></script>
   <script src="js/game_manager.js"></script>
   <script src="js/game.js"></script>
 </body>

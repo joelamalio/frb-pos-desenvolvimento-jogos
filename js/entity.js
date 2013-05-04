@@ -3,8 +3,16 @@ var Entity = Class.extend({
   position: {x: 0, y: 0},
   velocity: 5,
 
-  move: function(positions) {
-    this.position.x += positions;
+  move: function(update_x_axis) {
+    this.position.x += update_x_axis;
+  },
+
+  get_position: function() {
+    return this.position;
+  },
+
+  set_position: function(position) {
+    this.position = position;
   },
 
 });

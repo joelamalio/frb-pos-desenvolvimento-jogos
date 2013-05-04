@@ -5,9 +5,9 @@ var GameManager = Class.extend({
   players: [],
   weapons: [],
 
-  init: function(canvas) {
+  init: function(canvas, context) {
     this.canvas = canvas;
-    this.context = canvas.getContext("2d");
+    this.context = context;
   },
 
   add_enemy: function(enemy) {
@@ -32,21 +32,23 @@ var GameManager = Class.extend({
   draw_players: function() {
     for (var i = 0; i < this.players.length; i++) {
       var player = this.players[i];
-      this.context.drawImage(player.image, player.get_position().x, player.get_position().y);
+      player.draw();
     }
   },
 
   draw_enemies: function() {
     for (var i = 0; i < this.enemies.length; i++) {
       var enemy = this.enemies[i];
-      this.context.drawImage(enemy.image, enemy.get_position().x, enemy.get_position().y);
+      enemy.update_location();
+      enemy.draw();
     }
   },
 
   draw_weapons: function() {
     for (var i = 0; i < this.weapons.length; i++) {
       var weapon = this.weapons[i];
-      this.context.drawImage(weapon.image, weapon.get_position().x, weapon.update_position_y(), 15 , 15);
+      weapon.update_position_y(weapon.get_velocity());
+      weapon.draw();
     }
   },
 
@@ -59,7 +61,6 @@ var GameManager = Class.extend({
   },
 
   clear_canvas: function() {
-    //this.canvas.width = canvas.width;
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   },
 

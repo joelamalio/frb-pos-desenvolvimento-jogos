@@ -1,29 +1,35 @@
+var game_enabled = false;
 var canvas = document.getElementById("main_canvas");
+var context = canvas.getContext("2d");
+
 
 canvas.addEventListener("keydown", event_player, true);
-var game_manager = new GameManager(canvas);
-var player = new Player();
+canvas.addEventListener("focus", start_game, true);
+var game_manager = new GameManager(canvas, context);
+var player = new Player(context);
+var enemy1 = new Enemy(context);
 
 game_manager.add_player(player);
+game_manager.add_enemy(enemy1);
 
-
-setInterval(game_loop, 1000.0 / 60);
-
-function game_loop() {
+function loop_game() {
   game_manager.draw();
+}
+
+function start_game() {
+  setInterval(loop_game, 40);
 }
 
 function event_player(e) {
   if (e.keyCode == player.keys.left) {
-    player.move(-player.velocity);
+    player.update_position_x(-player.get_velocity());
   }
 
   if (e.keyCode == player.keys.right) {
-    player.move(player.velocity);
+    player.update_position_x(player.get_velocity());
   }
 
   if (e.keyCode == player.keys.space) {
-    console.log("shot fired");
     game_manager.use_weapon();
   }
 }

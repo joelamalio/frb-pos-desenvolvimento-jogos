@@ -42,7 +42,7 @@ var Entity = Class.extend({
     this.size = size;
   },
 
-  get_velocity: function() {
+  get_velocity: function() {d
     return this.velocity;
   },
 

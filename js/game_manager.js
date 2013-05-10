@@ -4,6 +4,8 @@ var GameManager = Class.extend({
   enemies: [],
   players: [],
   weapons: [],
+  shots: 0,
+  position_y: 0,
 
   init: function(canvas, context) {
     this.canvas = canvas;
@@ -47,17 +49,27 @@ var GameManager = Class.extend({
   draw_weapons: function() {
     for (var i = 0; i < this.weapons.length; i++) {
       var weapon = this.weapons[i];
-      weapon.update_position_y(weapon.get_velocity());
-      weapon.draw();
+	  if (weapon.get_position().y > 0) {
+		weapon.update_position_y(weapon.get_velocity());
+		this.position_y = weapon.get_position().y;
+		weapon.draw();
+	  }
     }
   },
 
   use_weapon: function() {
-    for (var i = 0; i < this.players.length; i++) {
-      var player = this.players[i];
-      player.use_weapon();
-      this.add_weapon(player.weapon);
-    }
+	if (this.shots <=0 ) {
+		for (var i = 0; i < this.players.length; i++) {
+			var player = this.players[i];
+			player.use_weapon();
+			this.add_weapon(player.weapon);
+		}
+		this.shots = this.shots + 1;
+	}else {
+		if (this.position_y == 0) {
+			this.shots = 0;
+		}
+	}
   },
 
   clear_canvas: function() {

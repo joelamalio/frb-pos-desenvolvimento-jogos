@@ -34,6 +34,7 @@ var GameManager = Class.extend({
     this.player.action();
     this.draw_weapons();
     this.draw_enemies();
+    this.input_manager.write_score({text : 'Score: ' + this.score , context : this.context})
   },
 
   draw_enemies: function() {

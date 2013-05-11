@@ -2,9 +2,9 @@ var canvas = document.getElementById("main_canvas");
 var context = canvas.getContext("2d");
 var game_manager = new GameManager(canvas, context);
 var player = new Player(context);
-var enemy1 = new Enemy(context, "images/flag_germany.bmp", {x: 10, y: 10});
-var enemy2 = new Enemy(context, "images/flag_argentina.bmp", {x: 110, y: 10});
-var enemy3 = new Enemy(context, "images/flag_portugal.bmp", {x: 210, y: 10});
+var enemy1 = new Enemy(context, "images/flag_germany.bmp", {x: 10, y: 50});
+var enemy2 = new Enemy(context, "images/flag_argentina.bmp", {x: 110, y: 50});
+var enemy3 = new Enemy(context, "images/flag_portugal.bmp", {x: 210, y: 50});
 var interval;
 
 game_manager.set_player(player);
@@ -18,9 +18,11 @@ function loop_game() {
   } else if (game_manager.lost) {
     console.log("You lost!");
     clearInterval(interval);
+    game_manager.input_manager.write_message({text : 'You lost!' , context : context});
   } else if (game_manager.won) {
     console.log("You won!");
     clearInterval(interval);
+    game_manager.input_manager.write_message({text : 'You won!' , context : context});
   }
 }
 

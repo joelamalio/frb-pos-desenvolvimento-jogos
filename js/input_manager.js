@@ -27,8 +27,14 @@ var InputManager = Class.extend({
   },
 
   onkey_enter: function(e) {
+    var game = GameManager.instance;
     if (e.keyCode == this.keys.enter) {
-      GameManager.instance.paused = !GameManager.instance.paused;
+      game.paused = !game.paused;
+      if (game.paused) {
+        game.input_manager.write_message({text : 'Paused...' , context : game.context});
+      } else {
+        game.input_manager.write_message({text : '' , context : game.context});
+      }
     }
   },
 
@@ -37,4 +43,38 @@ var InputManager = Class.extend({
       GameManager.instance.started = true;
     }
   },
+
+  write_text: function(options) {
+    var x = options.x;
+    var y = options.y;
+    var font = options.font;
+    var color = options.color;
+    var text = options.text;
+    var context = options.context;
+    context.save();
+    if('shadow' in options) {
+      context.shadowColor = options.shadow.color;
+      context.shadowOffsetX = options.shadow.x;
+      context.shadowOffsetY = options.shadow.y;
+      context.shadowBlur = options.shadow.blur;
+    }
+    context.font = font;
+    context.fillStyle = color;
+    if('align' in options) {
+      context.textAlign = options.align;
+    }
+    context.fillText(text , x , y);
+    context.restore();
+  },
+
+  write_score: function(parameters) {
+    options = {x : 15 , y : 25 , font : 'bold 15px arial' , color : '#fff' , text: parameters.text, context: parameters.context}
+    this.write_text(options);
+  },
+
+  write_message: function(parameters) {
+    options = {x : 700 , y : 25 , font : 'bold 15px arial' , color : '#fff' , text: parameters.text, context: parameters.context}
+    this.write_text(options);
+  },
+
 });

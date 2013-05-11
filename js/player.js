@@ -1,7 +1,5 @@
 var Player = Entity.extend({
 
-  keys: {left: 37, right: 39, space: 32},
-
   init: function(context) {
     this.context = context;
     this.set_image("images/flag_brazil.bmp");
@@ -19,18 +17,18 @@ var Player = Entity.extend({
 
   action: function() {
     var input = GameManager.instance.input_manager;
-    if (input.key_state[this.keys.left]) {
+    if (input.key_state[input.keys.left]) {
       this.update_position_x(-this.get_velocity());
     }
 
-    if (input.key_state[this.keys.right]) {
+    if (input.key_state[input.keys.right]) {
       this.update_position_x(this.get_velocity());
     }
 
-    if (input.key_state[this.keys.space]) {
-      if (GameManager.instance.weapon_free()) {
+    if (input.key_state[input.keys.space]) {
+      //if (GameManager.instance.weapon_free()) {
         this.load_weapon();
-      }
+      //}
     }
   },
 

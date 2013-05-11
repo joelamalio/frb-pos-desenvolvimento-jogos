@@ -7,6 +7,8 @@ var GameManager = Class.extend({
   score: 0,
   input_manager: null,
   shots: 0,
+  paused: false,
+  started: false,
 
   init: function(canvas, context) {
     this.canvas = canvas;
@@ -28,9 +30,6 @@ var GameManager = Class.extend({
     this.clear_canvas();
     this.player.draw();
     this.player.action();
-    console.log("space: " + this.input_manager.key_state[32]);
-    console.log("left: " + this.input_manager.key_state[37]);
-    console.log("right: " + this.input_manager.key_state[39]);
     this.draw_weapons();
     this.draw_enemies();
   },

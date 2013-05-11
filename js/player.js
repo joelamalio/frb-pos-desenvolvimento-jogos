@@ -1,7 +1,6 @@
 var Player = Entity.extend({
 
   keys: {left: 37, right: 39, space: 32},
-  weapon: null,
 
   init: function(context) {
     this.context = context;
@@ -11,10 +10,29 @@ var Player = Entity.extend({
     this.set_velocity(5);
   },
 
-  use_weapon: function() {
+  load_weapon: function() {
+    var weapon = new SimpleSoccerBall(this.context);
     var position = this.get_position();
-    this.weapon = new SimpleSoccerBall(this.context);
-    this.weapon.use(position.x, position.y);
+    weapon.prepare(position.x, position.y);
+    GameManager.instance.weapons.push(weapon);
   },
+
+  action: function() {
+    var input = GameManager.instance.input_manager;
+    if (input.key_state[this.keys.left]) {
+      this.update_position_x(-this.get_velocity());
+    }
+
+    if (input.key_state[this.keys.right]) {
+      this.update_position_x(this.get_velocity());
+    }
+
+    if (input.key_state[this.keys.space]) {
+      if (GameManager.instance.weapon_free()) {
+        this.load_weapon();
+      }
+    }
+  },
+
 
 });

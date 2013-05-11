@@ -4,7 +4,7 @@ var Entity = Class.extend({
   position: {x: 0, y: 0},
   size: {width: 0, height: 0},
   velocity: 0,
-  ativo: true,
+  activo: true,
 
   update_position_x: function(value) {
     this.position.x += value;
@@ -50,13 +50,13 @@ var Entity = Class.extend({
   set_velocity: function(velocity) {
     this.velocity = velocity;
   },
-  
-  get_ativo: function() {
-    return this.ativo;
+
+  get_activo: function() {
+    return this.activo;
   },
 
-  set_ativo: function(ativo) {
-    this.ativo = ativo;
+  set_activo: function(activo) {
+    this.activo = activo;
   },
 
 });

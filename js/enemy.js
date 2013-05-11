@@ -3,10 +3,10 @@ var LIMIT_AXIS_Y = 600;
 
 var Enemy = Entity.extend({
 
-  init: function(context) {
+  init: function(context, image, position) {
     this.context = context;
-    this.set_image("images/flag_germany.bmp");
-    this.set_position({x: 30, y: 10});
+    this.set_image(image);
+    this.set_position(position);
     this.set_size({width: 39, height: 29});
     this.set_velocity(5);
   },

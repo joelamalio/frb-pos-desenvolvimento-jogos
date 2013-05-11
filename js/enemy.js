@@ -27,7 +27,7 @@ var Enemy = Entity.extend({
     }
 
     if (y > this.get_limit_axis_y()) {
-      console.log("O Brasil foi derrotado!")
+      GameManager.instance.lost = true;
     }
   },
 

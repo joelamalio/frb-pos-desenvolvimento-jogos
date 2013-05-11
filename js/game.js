@@ -2,15 +2,36 @@ var canvas = document.getElementById("main_canvas");
 var context = canvas.getContext("2d");
 var game_manager = new GameManager(canvas, context);
 var player = new Player(context);
-var enemy1 = new Enemy(context, "images/flag_germany.bmp", {x: 10, y: 50});
-var enemy2 = new Enemy(context, "images/flag_argentina.bmp", {x: 110, y: 50});
-var enemy3 = new Enemy(context, "images/flag_portugal.bmp", {x: 210, y: 50});
 var interval;
 
 game_manager.set_player(player);
-game_manager.add_enemy(enemy1);
-game_manager.add_enemy(enemy2);
-game_manager.add_enemy(enemy3);
+game_manager.add_enemy("images/flag_germany.bmp", 0, 40);
+game_manager.add_enemy("images/flag_argentina.bmp", 80, 40);
+game_manager.add_enemy("images/flag_argentina.bmp", 160, 40);
+game_manager.add_enemy("images/flag_argentina.bmp", 240, 40);
+game_manager.add_enemy("images/flag_argentina.bmp", 320, 40);
+game_manager.add_enemy("images/flag_argentina.bmp", 400, 40);
+
+game_manager.add_enemy("images/flag_portugal.bmp", 0 , 100);
+game_manager.add_enemy("images/flag_portugal.bmp", 80 , 100);
+game_manager.add_enemy("images/flag_argentina.bmp", 160, 100);
+game_manager.add_enemy("images/flag_argentina.bmp", 240, 100);
+game_manager.add_enemy("images/flag_argentina.bmp", 320, 100);
+game_manager.add_enemy("images/flag_argentina.bmp", 400, 100);
+
+game_manager.add_enemy("images/flag_portugal.bmp", 0 , 160);
+game_manager.add_enemy("images/flag_portugal.bmp", 80 , 160);
+game_manager.add_enemy("images/flag_argentina.bmp", 160, 160);
+game_manager.add_enemy("images/flag_argentina.bmp", 240, 160);
+game_manager.add_enemy("images/flag_argentina.bmp", 320, 160);
+game_manager.add_enemy("images/flag_argentina.bmp", 400, 160);
+
+game_manager.add_enemy("images/flag_portugal.bmp", 0 , 220);
+game_manager.add_enemy("images/flag_portugal.bmp", 80 , 220);
+game_manager.add_enemy("images/flag_argentina.bmp", 160, 220);
+game_manager.add_enemy("images/flag_argentina.bmp", 240, 220);
+game_manager.add_enemy("images/flag_argentina.bmp", 320, 220);
+game_manager.add_enemy("images/flag_argentina.bmp", 400, 220);
 
 function loop_game() {
   if (game_manager.started && !game_manager.paused && !game_manager.lost && !game_manager.won) {

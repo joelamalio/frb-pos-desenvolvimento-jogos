@@ -20,7 +20,8 @@ var GameManager = Class.extend({
     GameManager.instance = this;
   },
 
-  add_enemy: function(enemy) {
+  add_enemy: function(enemy_image, x, y) {
+    var enemy = new Enemy(this.context, enemy_image, {x: x, y: y});
     this.enemies.push(enemy);
   },
 

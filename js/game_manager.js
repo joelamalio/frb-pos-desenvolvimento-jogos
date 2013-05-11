@@ -6,6 +6,7 @@ var GameManager = Class.extend({
   weapons: [],
   shots: 0,
   position_y: 0,
+  pontuacao: 0,
 
   init: function(canvas, context) {
     this.canvas = canvas;
@@ -21,6 +22,7 @@ var GameManager = Class.extend({
   },
 
   add_weapon: function(weapon) {
+    this.weapons = [];
     this.weapons.push(weapon);
   },
 
@@ -41,18 +43,42 @@ var GameManager = Class.extend({
   draw_enemies: function() {
     for (var i = 0; i < this.enemies.length; i++) {
       var enemy = this.enemies[i];
-      enemy.update_location();
-      enemy.draw();
+	  if (enemy.get_ativo()) {
+		enemy.update_location();
+		enemy.draw();
+	  }
     }
   },
 
-  draw_weapons: function() {
+  draw_weapons: function() {	
     for (var i = 0; i < this.weapons.length; i++) {
-      var weapon = this.weapons[i];
-	  if (weapon.get_position().y > 0) {
-		weapon.update_position_y(weapon.get_velocity());
-		this.position_y = weapon.get_position().y;
-		weapon.draw();
+		var weapon = this.weapons[i];
+		if (weapon.get_ativo()) {
+			if (weapon.get_position().y > 0) {
+				weapon.update_position_y(weapon.get_velocity());
+				this.position_y = weapon.get_position().y;
+				
+				for (var i = 0; i < this.enemies.length; i++) {
+					var enemy = this.enemies[i];
+					if (enemy.get_ativo()) {
+						var acertou = (weapon.get_position().x >= enemy.get_position().x && weapon.get_position().x <= (enemy.get_position().x + 30)) &&
+							(weapon.get_position().y >= enemy.get_position().y && weapon.get_position().y <= (enemy.get_position().y + 10))
+						if (acertou) {
+							this.pontuacao = this.pontuacao + 1;
+							console.log("pontuacao: " + this.pontuacao);
+							this.enemies[i].set_ativo(false);
+							this.weapons[0].set_ativo(false);
+							var enemy1 = new Enemy(this.context);
+							this.add_enemy(enemy1);
+							this.shots = 0;
+							this.players[0].use_weapon();
+						}
+					}
+				}
+				weapon.draw();
+		  }else {
+				this.weapons[0].set_ativo(false);
+		  }
 	  }
     }
   },

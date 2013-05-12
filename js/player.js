@@ -9,7 +9,6 @@ var Player = Entity.extend({
   },
 
   load_weapon: function() {
-  console.log('novo tiro');
     var weapon = new SimpleSoccerBall(this.context);
     var position = this.get_position();
     weapon.prepare(position.x, position.y);

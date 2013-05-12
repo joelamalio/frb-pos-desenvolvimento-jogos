@@ -86,7 +86,6 @@ var GameManager = Class.extend({
       if (weapon.hit(enemy.get_position())) {
         enemy.set_activo(false);
         this.score++;
-        console.log("score: " + this.score);
       }
     }
   },

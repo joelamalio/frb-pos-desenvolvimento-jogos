@@ -9,6 +9,7 @@ var Player = Entity.extend({
   },
 
   load_weapon: function() {
+  console.log('novo tiro');
     var weapon = new SimpleSoccerBall(this.context);
     var position = this.get_position();
     weapon.prepare(position.x, position.y);
@@ -26,9 +27,9 @@ var Player = Entity.extend({
     }
 
     if (input.key_state[input.keys.space]) {
-      //if (GameManager.instance.weapon_free()) {
+      if (GameManager.instance.weapon_free()) {
         this.load_weapon();
-      //}
+      }
     }
   },
 

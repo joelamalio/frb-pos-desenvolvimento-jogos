@@ -1,3 +1,6 @@
+var LIMIT_AXIS_X = 800;
+var LIMIT_AXIS_Y = 600;
+
 var GameManager = Class.extend({
   canvas: null,
   context: null,

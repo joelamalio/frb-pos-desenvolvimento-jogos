@@ -1,6 +1,3 @@
-var LIMIT_AXIS_X = 800;
-var LIMIT_AXIS_Y = 600;
-
 var Enemy = Entity.extend({
 
   init: function(context, image, position) {

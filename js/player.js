@@ -18,12 +18,17 @@ var Player = Entity.extend({
 
   action: function() {
     var input = GameManager.instance.input_manager;
+
     if (input.key_state[input.keys.left]) {
-      this.update_position_x(-this.get_velocity());
+      if (this.get_position().x > 0) {
+        this.update_position_x(-this.get_velocity());
+      }
     }
 
     if (input.key_state[input.keys.right]) {
-      this.update_position_x(this.get_velocity());
+      if (this.get_position().x < (LIMIT_AXIS_X - this.get_size().width)) {
+        this.update_position_x(this.get_velocity());
+      }
     }
 
     if (input.key_state[input.keys.space]) {

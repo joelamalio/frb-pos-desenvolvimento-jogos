@@ -9,10 +9,10 @@ game_manager.add_enemy("images/flag/afs.bmp", 0, 40);
 game_manager.add_enemy("images/flag/ang.bmp", 80, 40);
 game_manager.add_enemy("images/flag/argentina.bmp", 160, 40);
 game_manager.add_enemy("images/flag/bel.bmp", 240, 40);
-game_manager.add_enemy("images/flag/bul.bmp", 320, 40);
+game_manager.add_enemy("images/flag/eslovenia.bmp", 320, 40);
 game_manager.add_enemy("images/flag/cam.bmp", 400, 40);
 
-game_manager.add_enemy("images/flag/can.bmp", 0 , 100);
+game_manager.add_enemy("images/flag/eslovaquia.bmp", 0 , 100);
 game_manager.add_enemy("images/flag/chl.bmp", 80 , 100);
 game_manager.add_enemy("images/flag/cub.bmp", 160, 100);
 game_manager.add_enemy("images/flag/din.bmp", 240, 100);

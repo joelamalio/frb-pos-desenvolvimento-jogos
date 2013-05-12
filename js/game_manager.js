@@ -11,6 +11,7 @@ var GameManager = Class.extend({
   started: false,
   lost: false,
   won: false,
+  final_message: "",
 
   init: function(canvas, context) {
     this.canvas = canvas;
@@ -35,7 +36,7 @@ var GameManager = Class.extend({
     this.player.action();
     this.draw_weapons();
     this.draw_enemies();
-    this.input_manager.write_score({text : 'Score: ' + this.score , context : this.context})
+    this.input_manager.write_score()
   },
 
   draw_enemies: function() {

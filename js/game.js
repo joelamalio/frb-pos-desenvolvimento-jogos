@@ -36,14 +36,17 @@ game_manager.add_enemy("images/flag_argentina.bmp", 400, 220);
 function loop_game() {
   if (game_manager.started && !game_manager.paused && !game_manager.lost && !game_manager.won) {
     game_manager.draw();
-  } else if (game_manager.lost) {
-    console.log("You lost!");
+  } else if (game_manager.lost || game_manager.won) {
+    var message = "";
+    if (game_manager.lost) {
+      message = "You lost!";
+    } else if (game_manager.won) {
+      message = "You won!";
+    }
     clearInterval(interval);
-    game_manager.input_manager.write_message({text : 'You lost!' , context : context});
-  } else if (game_manager.won) {
-    console.log("You won!");
-    clearInterval(interval);
-    game_manager.input_manager.write_message({text : 'You won!' , context : context});
+    game_manager.clear_canvas();
+    game_manager.input_manager.write_score();
+    game_manager.input_manager.write_message(message);
   }
 }
 

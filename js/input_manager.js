@@ -31,9 +31,9 @@ var InputManager = Class.extend({
     if (e.keyCode == this.keys.enter) {
       game.paused = !game.paused;
       if (game.paused) {
-        game.input_manager.write_message({text : 'Paused...' , context : game.context});
+        game.input_manager.write_message('Paused...');
       } else {
-        game.input_manager.write_message({text : '' , context : game.context});
+        game.input_manager.write_message('');
       }
     }
   },
@@ -67,13 +67,15 @@ var InputManager = Class.extend({
     context.restore();
   },
 
-  write_score: function(parameters) {
-    options = {x : 15 , y : 25 , font : 'bold 15px arial' , color : '#fff' , text: parameters.text, context: parameters.context}
+  write_score: function() {
+    var game = GameManager.instance;
+    options = {x : 15, y : 25, font : 'bold 15px arial', color : '#fff', text: 'Score: ' + game.score, context: game.context}
     this.write_text(options);
   },
 
-  write_message: function(parameters) {
-    options = {x : 700 , y : 25 , font : 'bold 15px arial' , color : '#fff' , text: parameters.text, context: parameters.context}
+  write_message: function(message) {
+    var game = GameManager.instance;
+    options = {x : 700, y : 25, font : 'bold 15px arial', color : '#fff', text: message, context: game.context}
     this.write_text(options);
   },
 

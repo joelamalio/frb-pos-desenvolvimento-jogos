@@ -33,6 +33,13 @@ game_manager.add_enemy("images/flag/sen.bmp", 240, 220);
 game_manager.add_enemy("images/flag/tur.bmp", 320, 220);
 game_manager.add_enemy("images/flag/uru.bmp", 400, 220);
 
+game_manager.add_enemy("images/flag/switzerland.bmp", 0, 280);
+game_manager.add_enemy("images/flag/south_korea.bmp", 80, 280);
+game_manager.add_enemy("images/flag/ivory_coast.bmp", 160, 280);
+game_manager.add_enemy("images/flag/algeria.bmp", 240, 280);
+game_manager.add_enemy("images/flag/france.bmp", 320, 280);
+game_manager.add_enemy("images/flag/italy.bmp", 400, 280);
+
 function loop_game() {
   if (game_manager.started && !game_manager.paused && !game_manager.lost && !game_manager.won) {
     game_manager.draw();
